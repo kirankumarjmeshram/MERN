@@ -1,7 +1,7 @@
 const express = require("express");
-const connect = require("./configs/db")
-const userController = require("./controllers/user.controller");
-const productController = require("./controllers/product.controller");
+const connect = require("./src/configs/db")
+const userController = require("./src/controllers/user.controller");
+const productController = require("./src/controllers/product.controller");
 
 
 const app = express();
