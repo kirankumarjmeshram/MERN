@@ -1,0 +1,9 @@
+{
+    "first_name":"sonu",
+    "last_name": "MonuMon",
+    "email":"sonum@gmail.com",
+    "password":"123",
+    "address":"abcd",
+    "pin_code":456789
+
+}
