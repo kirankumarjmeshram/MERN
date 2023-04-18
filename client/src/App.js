@@ -22,7 +22,7 @@ const  App = () => {
 
   return (
     <div className="App">
-      <h1>{products}</h1>
+      <h1>{products[0]?._id}</h1>
     </div>
   );
 }
