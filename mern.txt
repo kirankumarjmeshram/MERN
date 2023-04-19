@@ -1,0 +1,16 @@
+important keypoints in JS
+preventDefault()
+stopPropogation()
+
+The Content-Type header is an HTTP header that specifies the 
+format of the data in the body of an HTTP request or response. 
+It tells the receiving end how to interpret the data in the message body, 
+so that it can properly handle the content
+
+The Content-Type header is typically set by the client when making an 
+HTTP request and by the server when sending an HTTP response. The value of the 
+header indicates the media type of the content, such as text/html for HTML content, 
+image/png for PNG images, or application/json for JSON data
+
+The application media type is used for data that doesn't fit into any of the 
+other well-known media types such as text, image, audio, or video.
