@@ -24,6 +24,21 @@ router.get("",async (req,res)=>{``
     }
 })
 
+router.get("/hello",async (req,res)=>{``
+    try{
+     
+        //user = await User.find().lean().exec() ;
+        return res.status(201).send(hello())
+        
+    }catch(err){
+        return res.status(500).send(err.message);
+    }
+})
+
+function hello (){
+    return "Hello World";
+}
+
 router.patch("/:id",async (req,res)=>{
     try{
         const user = await User.findByIdAndUpdate(req.params.id,req.body,{new:true}).lean().exec();

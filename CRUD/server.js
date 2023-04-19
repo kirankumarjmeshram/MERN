@@ -6,7 +6,12 @@ const productController = require("./src/controllers/product.controller");
 
 const app = express();
 
+// app.get("",(req,res)=>{
+//     return res.send("Hello World");
+// }
+// )
 app.use(express.json());
+
 
 app.use("/users",userController)
 app.use("/product",productController);

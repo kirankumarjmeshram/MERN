@@ -8,6 +8,7 @@ const productSchema = mongoose.Schema({
     price2:{type:Number,required:false},
     ram:{type:Number,required:true},
     battery:{type:Number,required:true},
+    memory:{type:Number, required: true},
 },{
     versionKey:false,
     timestamps:true,

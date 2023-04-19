@@ -10,13 +10,14 @@ const App = () => {
   const [price, setPrice] = useState("");
   const [ram, setRam] = useState("");
   const [battery, setBattery] = useState("");
+  const [memory, setMemory] = useState("");
 
 const handleOnSubmit = async (e) => {
-  e.preventDefault();
+
   let result = await fetch(
     API_URL, {
       method: "post",
-      body: JSON.stringify({name,img1:image, price1:price, ram, battery}),
+      body: JSON.stringify({name,img1:image, price1:price, ram, battery, memory}),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -31,6 +32,7 @@ const handleOnSubmit = async (e) => {
       setPrice("");
       setRam("");
       setBattery("");
+      setMemory("");
     }
 }
 
@@ -61,6 +63,8 @@ const handleOnSubmit = async (e) => {
              value={ram} onChange={(e) => setRam(e.target.value)} />
              <input type="number" pattern="[0-9]*" placeholder="battery" 
              value={battery} onChange={(e) => setBattery(e.target.value)} />
+             <input type="number" pattern="[0-9]*" placeholder="memory" 
+             value={memory} onChange={(e) => setMemory(e.target.value)} />
 
             <button type="submit" onClick={handleOnSubmit}>
               submit
@@ -76,6 +80,7 @@ const handleOnSubmit = async (e) => {
               <h2>price {elm?.price1}</h2>
               <h2> ram {elm?.ram}</h2>
               <h2> battery {elm?.battery}</h2>
+              <h2> memory {elm?.memory}</h2>
             </div>
           );
         })}
