@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <button onClick={(e)=>navigate('/info')}>Info</button>
       <button onClick={(e)=>navigate('/img')}>Img</button>
+      <button onClick={(e)=>navigate('/detail')}>ImgInfo</button>
     </div>
   );
 }

@@ -4,7 +4,7 @@ function ImgInfo (){
     const navigate = useNavigate();
     return (
         <>
-            <h1>Hello World2</h1>
+            <h1>This is Very Nice Image</h1>
             <button onClick={(e) => navigate("/")}>Back</button>
         </>
         

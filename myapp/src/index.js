@@ -5,6 +5,7 @@ import App from "./App";
 import ImgComponent from "./components/ImgComponent";
 import ImgInfo from "./components/ImgInfo";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ImgDetails from "./components/ImgDetails";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ root.render(
           alt="img"
         />}></Route>
         <Route path="info" element={<ImgInfo />} />
+        <Route path="detail" element={<ImgDetails/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
