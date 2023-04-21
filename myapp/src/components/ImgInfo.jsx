@@ -1,11 +1,12 @@
 import React from "react"
-import { useNavigate } from "react-router-dom";
-function ImgInfo (){
-    const navigate = useNavigate();
+//import { useNavigate } from "react-router-dom";
+import BackBtn from "./BackBtn";
+function ImgInfo ({back}){
+    //const navigate = useNavigate();
     return (
         <>
             <h1>This is Very Nice Image</h1>
-            <button onClick={(e) => navigate("/")}>Back</button>
+            {back===false?null:<BackBtn/>}
         </>
         
     ) 
