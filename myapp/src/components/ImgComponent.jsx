@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-function ImgComponent() {
+function ImgComponent(props) {
   const navigate = useNavigate();
   return (
     <>
-      <h1>Hello World</h1>
+      <img src={props.src} alt={props.alt}/>
       <button onClick={(e) => navigate("/")}>Back</button>
     </>
   );

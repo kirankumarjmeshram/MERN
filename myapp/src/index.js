@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import ImgComponent from "./components/ImgComponent";
 import ImgInfo from "./components/ImgInfo";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,14 +13,12 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}></Route>
 
-        <Route path="img" element={<ImgComponent />}></Route>
+        <Route path="img" element={<ImgComponent
+          src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&w=1000&q=80"
+          alt="img"
+        />}></Route>
         <Route path="info" element={<ImgInfo />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
