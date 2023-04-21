@@ -1,6 +1,6 @@
 import React from "react";
 import BackBtn from "./BackBtn";
-function ImgComponent({props}) {
+function ImgComponent(props) {
   const {back}=props
   //const navigate = useNavigate();
   return (

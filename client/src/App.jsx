@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 const API_URL = "http://localhost:1234/product";
 
 const App = () => {
+  //PUT
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -51,9 +52,21 @@ const App = () => {
     console.log(data);
     setProducts(data);
   };
+  //DELETE
+  function deleteProduct(id){
+    fetch(`${API_URL}/${id}`,{
+      method:'DELETE'
+    }).then((result)=>{
+      result.json().then((response)=>{
+        console.log(response)
+        productData();
+      })
+    })
+  }
 
   return (
     <div className="App">
+      {/* PUT */}
       <div>
         <h1>Add Product Data</h1>
         <form action="">
@@ -103,6 +116,7 @@ const App = () => {
           </button>
         </form>
       </div>
+      {/* GET */}
       <div>
         {products.map((elm, i) => {
           return (
@@ -113,6 +127,8 @@ const App = () => {
               <h2> ram {elm?.ram}</h2>
               <h2> battery {elm?.battery}</h2>
               <h2> memory {elm?.memory}</h2>
+              <button onClick={(e)=>{deleteProduct(elm?._id)}}>Delete Product</button>
+              {/* {console.log(elm)} */}
             </div>
           );
         })}
