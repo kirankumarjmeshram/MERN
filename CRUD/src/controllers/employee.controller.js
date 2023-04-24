@@ -1,10 +1,14 @@
 const express = require("express");
 
-const Employee = require("../models/employee.model")
+const Employee = require("../models/employee.model");
+
+const {uploadSingle,uploadMultiple} = require("../middlewares/upload");
+
+const fs = require("fs");
 
 const router = express.Router();
 
-router.post("",async (req,res)=>{
+router.post("", uploadSingle("pic"),async (req,res)=>{
     try{
         const employee = await Employee.create(req.body);
         return res.status(201).send(employee);
