@@ -11,7 +11,7 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [employeeId,setEmployeeId]=useState(null)
-
+const[visibilityStatus,setVisibilityStatus]=useState("hidden")
 
   const handleOnSubmit = async (e) => {
     let result = await fetch(API_URL, {
@@ -64,7 +64,7 @@ const App = () => {
   function selectEmployee(item)
   {
    
-   
+    setVisibilityStatus('visible')
     setFirst_name(item?.first_name)
     setLast_name(item?.last_name)
     setEmail(item?.email)
@@ -87,6 +87,7 @@ const App = () => {
       result.json().then((resp) => {
         console.warn(resp)
         employeeData();
+        setVisibilityStatus('hidden')
       })
     })
   }
@@ -156,7 +157,7 @@ const App = () => {
         </form>
       </div>
       {/* UPDATE */}
-      <div >
+      <div style={{visibility:visibilityStatus}}>
         <input type="text" value={first_name} onChange={(e)=>{setFirst_name(e.target.value)}} /> <br /><br />
         <input type="text" value={last_name} onChange={(e)=>{setLast_name(e.target.value)}} /> <br /><br />
         <input type="text" value={email} onChange={(e)=>{setEmail(e.target.value)}} /> <br /><br />
