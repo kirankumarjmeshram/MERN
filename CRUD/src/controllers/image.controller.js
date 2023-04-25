@@ -10,16 +10,6 @@ const {uploadSingle,uploadMultiple} = require("../middlewares/upload");
 const fs = require("fs");
 
 
-router.get('',async (req, res) => {
-    try {
-        const image = await Image.find().lean().exec();
-        res.status(201).send(image);
-    } catch (err) {
-        res.send(500).json({message: err.message,status:"Failed"});
-    }
-})
-
-
 router.post("/single", uploadSingle("img"), async (req,res)=>{
     try{
         console.log("querry hit")
@@ -50,6 +40,17 @@ router.post("/multiple",uploadMultiple("pictures",5),async (req, res) => {
         return res.status(500).send(err);
       }
 })
+
+router.get('',async (req, res) => {
+    try {
+        const image = await Image.find().lean().exec();
+        res.status(201).send(image);
+    } catch (err) {
+        res.send(500).json({message: err.message,status:"Failed"});
+    }
+})
+
+
 
 router.delete("/:id",async (req, res) => {
     try {

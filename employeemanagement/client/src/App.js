@@ -30,7 +30,7 @@ const[visibilityStatus,setVisibilityStatus]=useState("hidden")
     result = await result.json();
     console.warn(result);
     if (result) {
-      alert("Data saved succesfully");
+      //alert("Data saved succesfully");
       setFirst_name("");
       setLast_name("");
       setEmail("");

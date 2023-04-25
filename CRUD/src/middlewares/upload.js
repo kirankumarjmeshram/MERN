@@ -29,6 +29,7 @@ const upload = multer({
 const uploadSingle =(fieldName)=>{
     return (req,res,next)=>{
         const uploadItem = upload.single(fieldName);
+        console.log("querry hit multer-------")
         uploadItem(req,res,function (err){
             if(err instanceof multer.MulterError){
                 res.send({message:err.message,errorType:"MulterError"});
