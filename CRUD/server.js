@@ -8,10 +8,6 @@ const imgController = require("./src/controllers/img.controller");
 
 const app = express();
 
-// app.get("",(req,res)=>{
-//     return res.send("Hello World");
-// }
-// )
 app.use(express.json());
 
 
