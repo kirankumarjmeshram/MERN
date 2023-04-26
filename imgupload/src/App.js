@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
+import ShowImg from './ShowImg';
 
 const url = 'http://localhost:1234/img';
 
@@ -44,7 +45,8 @@ const handleFileUpload = async (e) => {
 
 
   return (
-    <div className="App"
+   <div>
+     <div className="App"
          onDragOver={handleDragOver}
          onDrop={handleDrop}
     >
@@ -66,6 +68,8 @@ const handleFileUpload = async (e) => {
          <button type='submit'>Submit</button>
       </form>
     </div>
+    <ShowImg/>
+   </div>
   );
 }
 

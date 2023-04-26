@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
   try{
       const newImage = await Img.create(body)
       newImage.save();
-      res.status(201).json({ msg : "New image uploaded...!"})
+      res.status(201).json({ msg : "New image uploaded!"})
   }catch(error){
       res.status(409).json({ message : error.message })
   }

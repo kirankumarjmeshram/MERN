@@ -4,8 +4,7 @@ const ImgSchema = mongoose.Schema({
     name:{type:String, required:false},
     myFile:{type:String, required: true}
 },{
-    versionKey:false,
-    required:true,
+  
     timestamp:true,
     
 })
