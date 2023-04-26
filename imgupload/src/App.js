@@ -5,7 +5,7 @@ import axios from 'axios';
 const url = 'http://localhost:1234/img';
 
 function App() {
-
+//const inputRef = useRef();
 const [postImage, setPostImage] = useState( { myFile : ""})
 
 const createPost = async (newImage) => {
@@ -15,6 +15,18 @@ const createPost = async (newImage) => {
     console.log(error)
   }
 }
+const handleDragOver = (event) => {
+  event.preventDefault();
+};
+
+const handleDrop = async (event) => {
+  event.preventDefault();
+  const files = event.dataTransfer.files[0];
+  //console.log(files)
+  const base64 = await convertToBase64(files);
+  console.log(base64)
+  setPostImage({ ...postImage, myFile : base64 })
+};
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -32,7 +44,11 @@ const handleFileUpload = async (e) => {
 
 
   return (
-    <div className="App">
+    <div className="App"
+         onDragOver={handleDragOver}
+         onDrop={handleDrop}
+    >
+      <h1>Image Upload</h1>
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="file-upload" className='custom-file-upload'>
