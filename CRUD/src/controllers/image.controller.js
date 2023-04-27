@@ -15,6 +15,7 @@ router.post("/single", uploadSingle("img"), async (req,res)=>{
         console.log("querry hit")
         const image = await Image.create({
             pictures:req.file.path,
+            
             user_id:req.body.user_id
         });
         return res.status(200).send(image)

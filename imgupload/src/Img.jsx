@@ -7,7 +7,7 @@ const url = 'http://localhost:1234/img';
 
 function App() {
 //const inputRef = useRef();
-const [postImage, setPostImage] = useState( { myFile : ""})
+const [postImage, setPostImage] = useState( { myFile : []})
 
 const createPost = async (newImage) => {
   try{
@@ -22,10 +22,11 @@ const handleDragOver = (event) => {
 
 const handleDrop = async (event) => {
   event.preventDefault();
+  console.log(event.dataTransfer.files.length)
   const files = event.dataTransfer.files[0];
   //console.log(files)
   const base64 = await convertToBase64(files);
-  console.log(base64)
+  //console.log(base64)
   setPostImage({ ...postImage, myFile : base64 })
 };
 
@@ -36,28 +37,23 @@ const handleSubmit = (e) => {
 }
 
 const handleFileUpload = async (e) => {
-  console.log('e-0---',e.target.files)
-  // const file = e.target.files[0];
-  let file;
-  if(e.target.files.length>1){
-    file=[]
-    for(let i=0;i<e.target.files.length;i++){
-
-      file.push(e.target.files[i])
-    }
-  }else{
-    file = e.target.files[0];
+  let n = e.target.files.length;
+  let base64Arr =[];
+  for(let i=0;i<n;i++){
+    base64Arr.push(await convertToBase64(e.target.files[i]))
   }
-  const base64 = await convertToBase64(file);
-  console.log(base64)
-  setPostImage({ ...postImage, myFile : base64 })
+  
+  //const file = e.target.files[0];
+  //const base64 = await convertToBase64(file);
+  console.log(base64Arr)
+  setPostImage({ ...postImage, myFile : [...base64Arr] })
 }
 
 
 
   return (
    <div>
-    {console.log("postImage----",postImage)}
+    {/* {console.log('postImage-------',postImage)} */}
      <div className="App"
          onDragOver={handleDragOver}
          onDrop={handleDrop}
@@ -66,11 +62,13 @@ const handleFileUpload = async (e) => {
       <form onSubmit={handleSubmit}>
 
         <label htmlFor="file-upload" className='custom-file-upload'>
-          {postImage.length>1 ? postImage?.map((elm)=>{
-            return(<>
-            <img src={elm?.myFile} alt="" />
-            </>)
-          }):<img src={postImage.myFile} alt="" />}
+          {postImage.myFile.length>1 && postImage.myFile.map((elm)=>{
+            return(
+              <>
+              <img src={elm} alt="" />
+              </>
+            )
+          })}
         </label>
 
         <input 
@@ -94,30 +92,14 @@ export default App;
 
 
 function convertToBase64(file){
-  if(file.length>1){
-    file.map((elm)=>{
-      return new Promise((resolve, reject) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(elm);
-        fileReader.onload = () => {
-          resolve(fileReader.result)
-        };
-        fileReader.onerror = (error) => {
-          reject(error)
-        }
-      })
-    })
-
-  }else{
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result)
-      };
-      fileReader.onerror = (error) => {
-        reject(error)
-      }
-    })
-  }
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
 }
