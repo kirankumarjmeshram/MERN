@@ -86,5 +86,5 @@ app.post("/upload", upload.single("img"), (req, res) => {
 
 app.listen(3010, async () => {
     await mongoose.connect(mongouri)
-  console.log(`Application live on localhost:3010`);
+  console.log(`Server3 Application live on localhost:3010`);
 });

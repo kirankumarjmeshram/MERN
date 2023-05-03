@@ -4,6 +4,7 @@ import axios from "axios";
 //import ShowImg from './ShowImg';
 
 const url = "http://localhost:1234/img";
+//const url = "http://localhost:1234/img2";
 
 function App() {
   //const inputRef = useRef();
@@ -36,8 +37,9 @@ function App() {
   };
 
   const handleFileUpload = async (e) => {
-    console.log("e-0---", e.target.files);
+    //console.log("e-0---", e.target.files);
     // const file = e.target.files[0];
+    console.log("Hello World");
     let file;
     if (e.target.files.length > 1) {
       file = [];
@@ -48,7 +50,8 @@ function App() {
       file = e.target.files[0];
     }
     const base64 = await convertToBase64(file);
-    console.log(base64);
+    //console.log(base64);
+  
     setPostImage({ ...postImage, myFile: base64 });
   };
 
